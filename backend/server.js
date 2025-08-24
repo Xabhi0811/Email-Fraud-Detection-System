@@ -117,8 +117,10 @@ app.post('/api/predict', (req, res) => {
   };
 
   PythonShell.run('email_fraud_detector.py', options, (err, results) => {
+    console.log('Python results:', results);
     if (err) {
       console.error('Python error in predict:', err);
+      
       
       const lowerText = emailText.toLowerCase();
       const isLikelyFraudulent = 
